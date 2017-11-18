@@ -1,0 +1,10 @@
+<h2>Wybierz prawidlową odpowiedz</h2>
+<h3>Treść pytania brzmi</h3> {{question[0].content}} 
+<h3 *ngFor="let item of question[0].answers">
+    <div>
+        <input type="checkbox" name="" id="">
+        <label for="">
+            {{item}}
+        </label>
+    </div>
+</h3>
