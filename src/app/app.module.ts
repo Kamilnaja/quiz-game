@@ -11,7 +11,10 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 
 const appRoutes: Routes = [
   {path: 'addquestion', component: AddQuestionComponent },
+  // todo - zmienić na prawidłową
   {path: 'displayquestion', component: DisplayQuestionComponent },
+  // {path: '', component: DisplayQuestionComponent },
+  {path: '', component: AddQuestionComponent }
   // {path: '**', component: PageNotFoundComponent }
 ];
 

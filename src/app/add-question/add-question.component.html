@@ -1,33 +1,31 @@
-<p>
+<section class="section">
+  
+<h2>
   Dodaj nowe pytanie
-</p>
-<form (ngSubmit)="saveQuestion()">
-  <label for="">Treść pytania</label>
-  <input type="text" placeholder="Potrawa kuchni włoskiej to: ">
-  
-  <h2>Odpowiedzi</h2>
-  <div class="formgroup">
-    <label for="">Odpowiedź 1</label>
-    <input type="text">
-    <input type="radio">
-  </div>
-  
-  <div class="formgroup">
-    <label for="">Odpowiedź 2</label>
-    <input type="text">
-    <input type="radio">
-  </div>
-  
-  <div class="formgroup">
-    <label for="">Odpowiedź 3</label>
-    <input type="text">
-    <input type="radio">
-  </div>
-  
-  <div class="formgroup">
-    <label for="">Odpowiedź 4</label>
-    <input type="text">
-    <input type="radio" name="" id="">
-  </div>
-  <button type="submit">Zapisz pytanie</button>
+</h2>
+
+<form
+  #newQuestionData = "ngForm"
+  (ngSubmit)="onSubmit(newQuestionData.value)"
+>
+<label for="" class="label">Tytuł pytania</label>
+<input type="text" name="title" ngModel>
+<br>
+<label for="" class="label">Odpowiedź 1</label>
+<input type="text" name="firstAnswer" ngModel>
+
+<br>
+<label for="" class="label">Odpowiedź 2</label>
+<input type="text" name="secondAnswer" ngModel>
+
+<label for="" class="label">Odpowiedź 3</label>
+<input type="text" name="thirdAnswer" ngModel>
+
+<label for="" class="label">Odpowiedź 4</label>
+<input type="text" name="fourthAnswer" ngModel>
+
+<br>
+
+<input class="button" type="submit" value="Wyślij"/>
 </form>
+</section>

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-add-question',
@@ -11,7 +12,7 @@ export class AddQuestionComponent implements OnInit {
 
   ngOnInit() {
   }
-  saveQuestion =  function () {
-    console.log('question is saved');
+  onSubmit = function (question) {
+    console.log(question);
   };
 }
