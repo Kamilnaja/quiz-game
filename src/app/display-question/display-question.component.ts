@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { QuestionsService } from '../questions.service';
+import { Question } from '../question';
+
 @Component({
   selector: 'app-display-question',
   templateUrl: './display-question.component.html',

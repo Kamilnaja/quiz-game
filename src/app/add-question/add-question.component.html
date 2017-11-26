@@ -1,3 +1,33 @@
 <p>
-  add-question works!
+  Dodaj nowe pytanie
 </p>
+<form (ngSubmit)="saveQuestion()">
+  <label for="">Treść pytania</label>
+  <input type="text" placeholder="Potrawa kuchni włoskiej to: ">
+  
+  <h2>Odpowiedzi</h2>
+  <div class="formgroup">
+    <label for="">Odpowiedź 1</label>
+    <input type="text">
+    <input type="radio">
+  </div>
+  
+  <div class="formgroup">
+    <label for="">Odpowiedź 2</label>
+    <input type="text">
+    <input type="radio">
+  </div>
+  
+  <div class="formgroup">
+    <label for="">Odpowiedź 3</label>
+    <input type="text">
+    <input type="radio">
+  </div>
+  
+  <div class="formgroup">
+    <label for="">Odpowiedź 4</label>
+    <input type="text">
+    <input type="radio" name="" id="">
+  </div>
+  <button type="submit">Zapisz pytanie</button>
+</form>

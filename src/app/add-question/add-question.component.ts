@@ -11,5 +11,7 @@ export class AddQuestionComponent implements OnInit {
 
   ngOnInit() {
   }
-
+  saveQuestion =  function () {
+    console.log('question is saved');
+  };
 }
