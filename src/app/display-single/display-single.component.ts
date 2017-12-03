@@ -4,7 +4,6 @@ import { QuestionsService } from '../questions.service';
 @Component({
   selector: 'app-display-single',
   templateUrl: './display-single.component.html',
-  styleUrls: ['./display-single.component.css']
 })
 export class DisplaySingleComponent implements OnInit {
   currentNum: number;

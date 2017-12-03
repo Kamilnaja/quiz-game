@@ -4,7 +4,6 @@ import { QuestionsService } from '../questions.service';
 @Component({
   selector: 'app-display-question',
   templateUrl: './display-question.component.html',
-  styleUrls: ['./display-question.component.css']
 })
 export class DisplayQuestionComponent implements OnInit {
   question: {};

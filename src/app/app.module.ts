@@ -10,13 +10,15 @@ import { AddQuestionComponent } from './add-question/add-question.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { DisplaySingleComponent } from './display-single/display-single.component';
 import { LastQuestionComponent } from './last-question/last-question.component';
+import { MainPageComponent } from './main-page/main-page.component';
+import {HeaderComponent} from './header/header.component';
+import {FooterComponent} from './footer/footer.component';
 
 const appRoutes: Routes = [
   {path: 'addquestion', component: AddQuestionComponent },
-  // todo - zmienić na prawidłową
   {path: 'displayallquestion', component: DisplayQuestionComponent },
   {path: 'displayquestion', component: DisplaySingleComponent},
-  {path: '', component: AddQuestionComponent },
+  {path: '', component: MainPageComponent },
   {path: 'lastquestion', component: LastQuestionComponent},
 ];
 
@@ -27,7 +29,10 @@ const appRoutes: Routes = [
     AddQuestionComponent,
     PageNotFoundComponent,
     DisplaySingleComponent,
-    LastQuestionComponent
+    LastQuestionComponent,
+    MainPageComponent,
+    HeaderComponent,
+    FooterComponent
   ],
   imports: [
     RouterModule.forRoot(
