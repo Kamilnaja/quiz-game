@@ -4,11 +4,14 @@ export const questionList: Question[] = [{
     id: 0,
     title: 'Zaznacz slowo na C',
     answers: [
-        'lorem', 'ipsum', 'dolor', 'consectetur']
+        'lorem', 'ipsum', 'color', 'consectetur'],
+        'goodAnswer': 'color'
   },
   {
     id: 1,
     title: 'Zaznacz slowo na L',
     answers: [
-        'Liban', 'Lorem', 'De Lorean', 'Lodołamacz']
+        'Liban', 'Lorem', 'De Lorean', 'Lodołamacz'],
+    goodAnswer: 'Lorem'
+
   }];

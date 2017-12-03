@@ -9,6 +9,7 @@ export class DisplaySingleComponent implements OnInit {
   currentNum: number;
   question: {};
   questionsLength: number;
+  properAnswers = 0;
 
   constructor(private questionService: QuestionsService) { }
 
@@ -18,7 +19,12 @@ export class DisplaySingleComponent implements OnInit {
     this.questionsLength = Object.keys(this.question).length;
   }
 
-  nextQuestion() {
+  nextQuestion(e) {
+    // porównaj target z odpowiedzią na pytanie
+    if (e.target.textContent === this.question[this.currentNum].goodAnswer) {
+      this.properAnswers++;
+      // todo - wyślij odpowiedzi do ostatniego componentu
+    }
     // aktualny nr pytania ma być krotszy od długości tablicy pytań - 1
     if (this.currentNum < this.questionsLength - 1) {
       return this.currentNum++;

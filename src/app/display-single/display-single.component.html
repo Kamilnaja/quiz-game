@@ -3,7 +3,7 @@
 <h2 class="title">{{question[currentNum].title }}</h2>
   <div *ngFor="let item of question[currentNum].answers" class="field is-grouped">
     <p class="control">
-      <button class="button" (click)="nextQuestion()">{{item}}</button>
+      <button class="button" (click)="nextQuestion($event)">{{item}}</button>
     </p>
   </div>
 </div>
