@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { QuestionsService } from '../questions.service';
-import { Question } from '../question';
 
 @Component({
   selector: 'app-display-question',
@@ -9,8 +8,9 @@ import { Question } from '../question';
 })
 export class DisplayQuestionComponent implements OnInit {
   question: {};
-  constructor(private questionService:QuestionsService) { }
+  constructor(private questionService: QuestionsService) { }
   ngOnInit() {
     this.question = this.questionService.getQuestionsList();
+    console.log(this.question);
   }
 }

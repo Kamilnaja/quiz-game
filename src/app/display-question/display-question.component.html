@@ -1,10 +1,12 @@
-<h2>Wybierz prawidlową odpowiedz</h2>
-<h3>Treść pytania brzmi</h3> {{question[0].content}} 
-<h3 *ngFor="let item of question[0].answers">
-    <div>
-        <input type="checkbox" name="" id="">
-        <label for="">
-            {{item}}
-        </label>
-    </div>
+<h3 *ngFor="let item of question[0].content">
+    {{item.content}}
 </h3>
+
+<div *ngFor="let item of question; let i = index" [attr.data-index]="i">
+    <h2>Pytanie numer : {{item.id}}</h2>
+    <h3>{{item.title}}</h3>
+    <ul>
+        <li *ngFor="let item of question[i].answers">{{item}}</li>
+    </ul>
+    <br>
+</div>
