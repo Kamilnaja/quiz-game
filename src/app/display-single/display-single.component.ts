@@ -10,7 +10,9 @@ export class DisplaySingleComponent implements OnInit {
   currentNum: number;
   question: {};
   questionsLength: number;
+
   constructor(private questionService: QuestionsService) { }
+  
   ngOnInit() {
     this.question = this.questionService.getQuestionsList();
     this.currentNum = 0;
@@ -20,10 +22,7 @@ export class DisplaySingleComponent implements OnInit {
   nextQuestion() {
     // aktualny nr pytania ma być krotszy od długości tablicy pytań - 1
     if (this.currentNum < this.questionsLength - 1) {
-      console.log('is shorter');
       return this.currentNum++;
-    } else {
-      return // ostatnie pytanie
     }
   }
 
