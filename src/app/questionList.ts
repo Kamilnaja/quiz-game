@@ -1,14 +1,14 @@
 import Question from './question';
 
 export const questionList: Question[] = [{
-    id: 1,
+    id: 0,
     title: 'Zaznacz slowo na C',
     answers: [
         'lorem', 'ipsum', 'dolor', 'consectetur']
   },
   {
-    id: 2,
+    id: 1,
     title: 'Zaznacz slowo na L',
     answers: [
-        'lorem', 'ipsum', 'dolor', 'consectetur']
+        'Liban', 'Lorem', 'De Lorean', 'Lodołamacz']
   }];

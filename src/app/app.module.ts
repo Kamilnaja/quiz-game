@@ -8,14 +8,14 @@ import { DisplayQuestionComponent } from './display-question/display-question.co
 import { QuestionsService } from 'app/questions.service';
 import { AddQuestionComponent } from './add-question/add-question.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { DisplaySingleComponent } from './display-single/display-single.component';
 
 const appRoutes: Routes = [
   {path: 'addquestion', component: AddQuestionComponent },
   // todo - zmienić na prawidłową
-  {path: 'displayquestion', component: DisplayQuestionComponent },
-  // {path: '', component: DisplayQuestionComponent },
+  {path: 'displayallquestion', component: DisplayQuestionComponent },
+  {path: 'displayquestion', component: DisplaySingleComponent},
   {path: '', component: AddQuestionComponent }
-  // {path: '**', component: PageNotFoundComponent }
 ];
 
 @NgModule({
@@ -23,7 +23,8 @@ const appRoutes: Routes = [
     AppComponent,
     DisplayQuestionComponent,
     AddQuestionComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    DisplaySingleComponent
   ],
   imports: [
     RouterModule.forRoot(

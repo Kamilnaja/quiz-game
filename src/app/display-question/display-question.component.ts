@@ -11,6 +11,5 @@ export class DisplayQuestionComponent implements OnInit {
   constructor(private questionService: QuestionsService) { }
   ngOnInit() {
     this.question = this.questionService.getQuestionsList();
-    console.log(this.question);
   }
 }

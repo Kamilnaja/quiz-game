@@ -6,7 +6,8 @@
     <h2>Pytanie numer : {{item.id}}</h2>
     <h3>{{item.title}}</h3>
     <ul>
-        <li *ngFor="let item of question[i].answers">{{item}}</li>
+        <li *ngFor="let item of question[i].answers"><input type="checkbox" class="question-checkbox">{{item}}</li>
     </ul>
+    <button class="btn">Submit</button>
     <br>
 </div>
