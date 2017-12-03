@@ -1,0 +1,27 @@
+<!-- <h3 *ngFor="let item of question[0].content">
+    {{item.content}}
+</h3> -->
+<b>Aktualny numer pytania, to {{currentNum}}</b> 
+<!--
+<div *ngFor="let item of question; let i = index" [attr.data-index]="i">
+    <h2>Pytanie numer : {{item.id}}</h2>
+    <h3>{{item.title}}</h3>
+    <ul>
+        <li *ngFor="let item of question[i].answers"><input type="checkbox" class="question-checkbox">{{item}}</li>
+    </ul>
+    <button class="btn">Submit</button>
+    <br>
+</div> -->
+
+<div>
+<h2>Pytanie number : {{question[currentNum].id}}</h2>
+<h3>{{question[currentNum].title }}</h3>
+<ul>
+  <li *ngFor="let item of question[currentNum].answers">
+      <input type="checkbox" class="question-checkbox">{{item}}
+  </li>
+</ul>
+</div>
+
+<button class="btn" (click)="previousQuestion()">Poprzednie</button>
+<button class="btn" (click)="nextQuestion()">Następne</button>
