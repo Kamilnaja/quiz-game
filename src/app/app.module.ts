@@ -9,13 +9,15 @@ import { QuestionsService } from 'app/questions.service';
 import { AddQuestionComponent } from './add-question/add-question.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { DisplaySingleComponent } from './display-single/display-single.component';
+import { LastQuestionComponent } from './last-question/last-question.component';
 
 const appRoutes: Routes = [
   {path: 'addquestion', component: AddQuestionComponent },
   // todo - zmienić na prawidłową
   {path: 'displayallquestion', component: DisplayQuestionComponent },
   {path: 'displayquestion', component: DisplaySingleComponent},
-  {path: '', component: AddQuestionComponent }
+  {path: '', component: AddQuestionComponent },
+  {path: 'lastquestion', component: LastQuestionComponent},
 ];
 
 @NgModule({
@@ -24,7 +26,8 @@ const appRoutes: Routes = [
     DisplayQuestionComponent,
     AddQuestionComponent,
     PageNotFoundComponent,
-    DisplaySingleComponent
+    DisplaySingleComponent,
+    LastQuestionComponent
   ],
   imports: [
     RouterModule.forRoot(
