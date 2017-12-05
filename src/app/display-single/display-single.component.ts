@@ -1,44 +1,54 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { QuestionsService } from '../questions.service';
+import { DataService } from '../dataService';
+import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-display-single',
+  selector: ' app-display-single',
   templateUrl: './display-single.component.html',
 })
-export class DisplaySingleComponent implements OnInit {
+
+export class DisplaySingleComponent implements OnInit, OnDestroy {
   currentNum: number;
   question: {};
   questionsLength: number;
-  properAnswers = 0;
-
-  constructor(private questionService: QuestionsService) { }
-
+  correctAnswers = 0;
+  message: number;
+  router: Router;
+  
+  constructor(
+    public questionService: QuestionsService,
+    private data: DataService,
+    _router: Router
+  ) {
+    this.router = _router;
+  }
+  
   ngOnInit() {
     this.question = this.questionService.getQuestionsList();
     this.currentNum = 0;
     this.questionsLength = Object.keys(this.question).length;
+    this.data.currentMessage.subscribe(message => this.message = message);
   }
-
+  
   nextQuestion(e) {
-    // porównaj target z odpowiedzią na pytanie
     if (e.target.textContent === this.question[this.currentNum].goodAnswer) {
-      this.properAnswers++;
-      // todo - wyślij odpowiedzi do ostatniego componentu
+      this.correctAnswers++;
     }
-    // aktualny nr pytania ma być krotszy od długości tablicy pytań - 1
     if (this.currentNum < this.questionsLength - 1) {
       return this.currentNum++;
     } else {
-      // todo - poprawić, żeby nie było przeładowania strony
-      window.location.href = 'http://localhost:4200/lastquestion';
+      this.router.navigateByUrl('/lastquestion');
     }
   }
-
+  
   previousQuestion() {
-    // if number is less or equal than one, do not decrement
     if (this.currentNum > 0) {
       return this.currentNum--;
     }
   }
-
+  
+  ngOnDestroy() {
+    this.data.changeMessage(this.correctAnswers);
+  }
 }

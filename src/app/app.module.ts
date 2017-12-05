@@ -6,6 +6,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { DisplayQuestionComponent } from './display-question/display-question.component';
 import { QuestionsService } from 'app/questions.service';
+import {DataService} from './dataService';
 import { AddQuestionComponent } from './add-question/add-question.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { DisplaySingleComponent } from './display-single/display-single.component';
@@ -13,6 +14,7 @@ import { LastQuestionComponent } from './last-question/last-question.component';
 import { MainPageComponent } from './main-page/main-page.component';
 import {HeaderComponent} from './header/header.component';
 import {FooterComponent} from './footer/footer.component';
+import {ResultsComponent} from './results/results.component';
 
 const appRoutes: Routes = [
   {path: 'addquestion', component: AddQuestionComponent },
@@ -20,6 +22,7 @@ const appRoutes: Routes = [
   {path: 'displayquestion', component: DisplaySingleComponent},
   {path: '', component: MainPageComponent },
   {path: 'lastquestion', component: LastQuestionComponent},
+  {path: 'results', component: ResultsComponent},
 ];
 
 @NgModule({
@@ -32,7 +35,8 @@ const appRoutes: Routes = [
     LastQuestionComponent,
     MainPageComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    ResultsComponent
   ],
   imports: [
     RouterModule.forRoot(
@@ -43,7 +47,7 @@ const appRoutes: Routes = [
     FormsModule,
     HttpModule
   ],
-  providers: [QuestionsService],
+  providers: [QuestionsService, DataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
