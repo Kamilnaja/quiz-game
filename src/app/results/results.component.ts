@@ -11,6 +11,6 @@ export class ResultsComponent implements OnInit {
   constructor(public data: DataService) { }
 
   ngOnInit() {
-    this.data.currentMessage.subscribe(message => this.message = message);
+    this.data.currentQuestion.subscribe(message => this.message = message);
   }
 }

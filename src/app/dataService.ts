@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 @Injectable()
+
 export class DataService {
-  private messageSource = new BehaviorSubject<number>(0);
-  currentMessage = this.messageSource.asObservable();
+  private questionSource = new BehaviorSubject<number>(0);
+  currentQuestion = this.questionSource.asObservable();
   constructor() { }
-  changeMessage(message: number) {
-    this.messageSource.next(message);
+  changeQuestion(question: number) {
+    this.questionSource.next(question);
   }
 }

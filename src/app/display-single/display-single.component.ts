@@ -28,7 +28,7 @@ export class DisplaySingleComponent implements OnInit, OnDestroy {
     this.question = this.questionService.getQuestionsList();
     this.currentNum = 0;
     this.questionsLength = Object.keys(this.question).length;
-    this.data.currentMessage.subscribe(message => this.message = message);
+    this.data.currentQuestion.subscribe(message => this.message = message);
   }
   
   nextQuestion(e) {
@@ -49,6 +49,6 @@ export class DisplaySingleComponent implements OnInit, OnDestroy {
   }
   
   ngOnDestroy() {
-    this.data.changeMessage(this.correctAnswers);
+    this.data.changeQuestion(this.correctAnswers);
   }
 }

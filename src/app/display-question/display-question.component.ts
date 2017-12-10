@@ -9,6 +9,7 @@ export class DisplayQuestionComponent implements OnInit {
   question: {};
   constructor(private questionService: QuestionsService) { }
   ngOnInit() {
+    debugger;
     this.question = this.questionService.getQuestionsList();
   }
 }
