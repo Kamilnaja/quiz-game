@@ -6,8 +6,9 @@ import { Http, HttpModule } from '@angular/http';
   selector: 'app-display-question',
   templateUrl: './displayAllQuestions.html',
 })
+
 export class DisplayAllQuestionsComponent implements OnInit {
-  private question: {};
+  public question: {};
   constructor(private questionsService: QuestionsService) {
   }
   

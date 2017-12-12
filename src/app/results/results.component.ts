@@ -8,6 +8,7 @@ import { DataService } from 'app/services/dataService';
 
 export class ResultsComponent implements OnInit {
   message: number;
+  
   constructor(public data: DataService) { }
 
   ngOnInit() {

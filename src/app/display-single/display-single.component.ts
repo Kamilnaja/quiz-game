@@ -10,7 +10,7 @@ import { Http, HttpModule } from '@angular/http';
 })
 
 export class DisplaySingleComponent implements OnInit, OnDestroy {
-  currentNum: number;
+  currentNum = 0;
   question: {};
   questionsLength: number;
   correctAnswers = 0;
@@ -26,12 +26,13 @@ export class DisplaySingleComponent implements OnInit, OnDestroy {
   }
   
   ngOnInit() {
-    // pobierz pytania 
+    this.getQuestion();
   }
 
   getQuestion() {
     this.questionsService.getQuestonsList().subscribe(question => {
       this.question = question;
+      console.log(question[0].id);
     });
   }
 
