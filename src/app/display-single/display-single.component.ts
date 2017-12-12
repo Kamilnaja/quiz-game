@@ -1,7 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { QuestionsService } from '../questions.service';
-import { DataService } from '../dataService';
+import { QuestionsService } from 'app/services/questionsService';
+import { DataService } from 'app/services/dataService';
 import { Router } from '@angular/router';
+import { Http, HttpModule } from '@angular/http';
 
 @Component({
   selector: ' app-display-single',
@@ -17,7 +18,7 @@ export class DisplaySingleComponent implements OnInit, OnDestroy {
   router: Router;
   
   constructor(
-    public questionService: QuestionsService,
+    public questionsService: QuestionsService,
     private data: DataService,
     _router: Router
   ) {
@@ -25,12 +26,15 @@ export class DisplaySingleComponent implements OnInit, OnDestroy {
   }
   
   ngOnInit() {
-    this.question = this.questionService.getQuestionsList();
-    this.currentNum = 0;
-    this.questionsLength = Object.keys(this.question).length;
-    this.data.currentQuestion.subscribe(message => this.message = message);
+    // pobierz pytania 
   }
-  
+
+  getQuestion() {
+    this.questionsService.getQuestonsList().subscribe(question => {
+      this.question = question;
+    });
+  }
+
   nextQuestion(e) {
     if (e.target.textContent === this.question[this.currentNum].goodAnswer) {
       this.correctAnswers++;

@@ -1,12 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-// import { HttpModule } from '@angular/http';
 import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
-import { DisplayQuestionComponent } from './display-question/display-question.component';
-import { QuestionsService } from 'app/questions.service';
-import {DataService} from './dataService';
+import { DisplayAllQuestionsComponent } from './displayAllQuestions/displayAllQuestionsComponent';
 import { AddQuestionComponent } from './add-question/add-question.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { DisplaySingleComponent } from './display-single/display-single.component';
@@ -15,11 +12,13 @@ import { MainPageComponent } from './main-page/main-page.component';
 import {HeaderComponent} from './header/header.component';
 import {FooterComponent} from './footer/footer.component';
 import {ResultsComponent} from './results/results.component';
-import {HttpClientModule} from '@angular/common/http';
+import {HttpModule} from '@angular/http';
+import { DataService } from 'app/services/dataService';
+import { QuestionsService } from 'app/services/questionsService';
 
 const appRoutes: Routes = [
   {path: 'addquestion', component: AddQuestionComponent },
-  {path: 'displayallquestion', component: DisplayQuestionComponent },
+  {path: 'displayallquestion', component: DisplayAllQuestionsComponent },
   {path: 'displayquestion', component: DisplaySingleComponent},
   {path: '', component: MainPageComponent },
   {path: 'lastquestion', component: LastQuestionComponent},
@@ -29,7 +28,7 @@ const appRoutes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    DisplayQuestionComponent,
+    DisplayAllQuestionsComponent,
     AddQuestionComponent,
     PageNotFoundComponent,
     DisplaySingleComponent,
@@ -37,7 +36,7 @@ const appRoutes: Routes = [
     MainPageComponent,
     HeaderComponent,
     FooterComponent,
-    ResultsComponent
+    ResultsComponent,
   ],
   imports: [
     RouterModule.forRoot(
@@ -46,9 +45,9 @@ const appRoutes: Routes = [
     ),
     BrowserModule,
     FormsModule,
-    HttpClientModule
+    HttpModule
   ],
-  providers: [QuestionsService, DataService],
+  providers: [DataService, QuestionsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
