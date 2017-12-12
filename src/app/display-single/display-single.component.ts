@@ -10,13 +10,13 @@ import { Http, HttpModule } from '@angular/http';
 })
 
 export class DisplaySingleComponent implements OnInit, OnDestroy {
-  currentNum = 0;
   question: {};
   questionsLength: number;
   correctAnswers = 0;
   message: number;
   router: Router;
-  
+  currentNum: number;
+
   constructor(
     public questionsService: QuestionsService,
     private data: DataService,
@@ -26,15 +26,13 @@ export class DisplaySingleComponent implements OnInit, OnDestroy {
   }
   
   ngOnInit() {
-    this.getQuestion();
+    this.questionsService
+      .getQuestionsList()
+      .subscribe((data) => this.question = data
+    );
+    this.currentNum = 0;
   }
-
-  getQuestion() {
-    this.questionsService.getQuestonsList().subscribe(question => {
-      this.question = question;
-      console.log(question[0].id);
-    });
-  }
+  
 
   nextQuestion(e) {
     if (e.target.textContent === this.question[this.currentNum].goodAnswer) {

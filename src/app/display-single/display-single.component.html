@@ -1,11 +1,11 @@
-<h3 class="subtitle">Pytanie number : {{ question[currentNum].id }}</h3>
-<h2 class="title">{{question[currentNum].title }}</h2>
-
-<div *ngFor="let item of question[currentNum].answers" class="field is-grouped">
+<div *ngIf="question && question.length > 0">
+  <h3 class="subtitle">Pytanie number : {{ question[currentNum].id }}</h3>
+  <h2 class="title">{{question[currentNum].title }}</h2>
+  <div *ngFor="let item of question[currentNum].answers" class="field is-grouped">
     <p class="control">
       <button class="button" (click)="nextQuestion($event)">{{item}}</button>
     </p>
   </div>
-
-<button class="button" (click)="previousQuestion()">Poprzednie</button>
-<button class="button" (click)="nextQuestion()">Następne</button>
+  <button class="button" (click)="previousQuestion()">Poprzednie</button>
+  <button class="button" (click)="nextQuestion()">Następne</button>
+</div>

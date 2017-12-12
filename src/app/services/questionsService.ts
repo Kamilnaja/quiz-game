@@ -9,10 +9,10 @@ import 'rxjs/add/operator/map';
 export class QuestionsService {
   apiRoot = 'http://localhost:8080/api';
   constructor(private http: Http) {}
-  public localVar: any;
 
-  getQuestonsList() {
-    return this.http.get(this.apiRoot).map(res => res.json());
+  getQuestionsList() {
+    return this.http.get(this.apiRoot)
+      .map(res => res.json());
   }
 }
 

@@ -11,15 +11,10 @@ export class DisplayAllQuestionsComponent implements OnInit {
   public question: {};
   constructor(private questionsService: QuestionsService) {
   }
-  
-  ngOnInit() {
-    this.getQuestion();
-  }
 
-  getQuestion() {
-    this.questionsService.getQuestonsList().subscribe(question => {
-      this.question = question;
-      console.log(question);
-    });
+  ngOnInit() {
+    this.questionsService
+      .getQuestionsList()
+      .subscribe((data) => this.question = data);
   }
 }
