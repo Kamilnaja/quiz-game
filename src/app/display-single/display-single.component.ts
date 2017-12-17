@@ -11,34 +11,39 @@ import { Http, HttpModule } from '@angular/http';
 
 export class DisplaySingleComponent implements OnInit, OnDestroy {
   question: {};
-  questionsLength: number;
   correctAnswers = 0;
+  
   message: number;
   router: Router;
   currentNum: number;
-
+  
   constructor(
     public questionsService: QuestionsService,
     private data: DataService,
-    _router: Router
+    _router: Router,
+    
+    
   ) {
     this.router = _router;
   }
   
   ngOnInit() {
     this.questionsService
-      .getQuestionsList()
-      .subscribe((data) => this.question = data
-    );
-    this.currentNum = 0;
-  }
-  
+    .getQuestionsList()
+    .subscribe((data) => this.question = data
+  );
+  this.currentNum = 0;
+}
 
-  nextQuestion(e) {
+
+nextQuestion(e) {
+  
+  const questionsLength: number = Object.keys(this.question).length;
+
     if (e.target.textContent === this.question[this.currentNum].goodAnswer) {
       this.correctAnswers++;
     }
-    if (this.currentNum < this.questionsLength - 1) {
+    if (this.currentNum < questionsLength - 1) {
       return this.currentNum++;
     } else {
       this.router.navigateByUrl('/lastquestion');
