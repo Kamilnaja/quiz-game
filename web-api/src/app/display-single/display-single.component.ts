@@ -13,7 +13,7 @@ export class DisplaySingleComponent implements OnInit, OnDestroy {
   question: {};
   correctAnswers = 0;
   
-  message: number;
+  // message: number;
   router: Router;
   currentNum: number;
   

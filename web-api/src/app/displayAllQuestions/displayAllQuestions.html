@@ -1,4 +1,4 @@
-<h3>
+<h3 class="">
     Wszystkie pytania
 </h3>
 
@@ -7,6 +7,8 @@
     <h3>{{item.title}}</h3>
     <ul>
         <li *ngFor="let item of question[i].answers">
-            <input type="checkbox" class="question-checkbox">{{item}}</li>
+            {{item}}
+        </li>
     </ul>
+    <hr>
 </div>
