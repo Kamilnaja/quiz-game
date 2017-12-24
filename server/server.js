@@ -1,66 +1,34 @@
-var express       = require('express');
-const bodyParser  = require('body-parser');
-const MongoClient = require('mongodb').MongoClient
-const db          = require('./db');
-var port          = 8080;
-var app           = express();
-
-app.use(bodyParser.urlencoded({ extended: true }));
-require('./routes')(app, {});
-
-
+var express = require("express");
+var mongoose = require("mongoose");
+var port = 8080;
+var app = express();
+var bodyParser = require('body-parser');
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
-var router = express.Router();
-
-app.use(function (req, res, next) {
-
-    // Website you wish to allow to connect
-    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:4200');
-
-    // Request methods you wish to allow
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
-
-    // Request headers you wish to allow
-    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
-
-    // Set to true if you need the website to include cookies in the requests sent
-    // to the API (e.g. in case you use sessions)
-    res.setHeader('Access-Control-Allow-Credentials', true);
-
-    // Pass to next layer of middleware
-    next();
+mongoose.Promise = global.Promise;
+mongoose.connect("mongodb://kamil:0000@ds159696.mlab.com:59696/quiz");
+var nameSchema = new mongoose.Schema({
+    title: String,
 });
 
-MongoClient.connect(db.url, (err, database) => {
-    if (err) return console.log(err);
-
-    require('./routes')(app, database);
-    
-    app.listen(port, () => {
-        console.log("listening at " + port);
-    });    
-})
-
+var Question = mongoose.model("Question", nameSchema);
 
 app.get("/", (req, res) => {
-    res.send("hello world");
-})
-// MongoClient.connect(db.url, function (err, database) {
-//     if (err) return console.log(err);
-//     require(database);
+    res.sendFile(__dirname + "/index.html");
+});
 
-//     const collection = db.collection('questions')
-//     collection.find({}).toArray(function (err, result) {
-//         if (err) throw err
+app.post("/addquestion", (req, res) => {
+    var myData = new Question(req.body);
+    myData.save()
+        .then(item => {
+            res.send("Name saved to database");
+        })
+        .catch(err => {
+            res.status(400).send("Unable to save to database");
+        });
+});
 
-//         console.log(result);
-//     })
-// })
-
-
-
-
-// app.use('/api', router);
-
-
+app.listen(port, () => {
+    console.log("Server listening on port " + port);
+});

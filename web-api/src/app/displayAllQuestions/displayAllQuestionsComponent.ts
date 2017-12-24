@@ -13,8 +13,7 @@ export class DisplayAllQuestionsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.questionsService
-      .getQuestionsList()
-      .subscribe((data) => this.question = data);
+    this.question = this.questionsService
+      .getQuestionsList();
   }
 }

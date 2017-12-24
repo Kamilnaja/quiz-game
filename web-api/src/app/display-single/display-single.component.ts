@@ -12,33 +12,29 @@ import { Http, HttpModule } from '@angular/http';
 export class DisplaySingleComponent implements OnInit, OnDestroy {
   question: {};
   correctAnswers = 0;
-  
+
   // message: number;
   router: Router;
   currentNum: number;
-  
+
   constructor(
     public questionsService: QuestionsService,
     private data: DataService,
     _router: Router,
-    
-    
+
+
   ) {
     this.router = _router;
   }
-  
+
   ngOnInit() {
-    this.questionsService
-    .getQuestionsList()
-    .subscribe((data) => this.question = data
-  );
-  this.currentNum = 0;
-}
+   this.question = this.questionsService.getQuestionsList();
+    this.currentNum = 0;
+  }
 
+  nextQuestion(e) {
 
-nextQuestion(e) {
-  
-  const questionsLength: number = Object.keys(this.question).length;
+    const questionsLength: number = Object.keys(this.question).length;
 
     if (e.target.textContent === this.question[this.currentNum].goodAnswer) {
       this.correctAnswers++;
@@ -49,13 +45,13 @@ nextQuestion(e) {
       this.router.navigateByUrl('/lastquestion');
     }
   }
-  
+
   previousQuestion() {
     if (this.currentNum > 0) {
       return this.currentNum--;
     }
   }
-  
+
   ngOnDestroy() {
     this.data.changeQuestion(this.correctAnswers);
   }
