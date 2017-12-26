@@ -14,4 +14,8 @@ export class ResultsComponent implements OnInit {
   ngOnInit() {
     this.data.currentQuestion.subscribe(message => this.message = message);
   }
+
+  ngOnChange( ){
+    
+  }
 }

@@ -12,6 +12,10 @@ export class QuestionsService {
   getQuestionsList(): Question[] {
     return questionList;
   }
+
+  getQuestionsListLength(): number {
+    return questionList.length;
+  }
 }
 
 export default QuestionsService;

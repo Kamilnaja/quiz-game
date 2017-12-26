@@ -15,6 +15,7 @@ import {ResultsComponent} from './results/results.component';
 import {HttpModule} from '@angular/http';
 import { DataService } from 'app/services/dataService';
 import { QuestionsService } from 'app/services/questionsService';
+import { ProgressBarComponent } from './progress-bar/progress-bar.component';
 
 const appRoutes: Routes = [
   {path: 'addquestion', component: AddQuestionComponent },
@@ -37,6 +38,7 @@ const appRoutes: Routes = [
     HeaderComponent,
     FooterComponent,
     ResultsComponent,
+    ProgressBarComponent,
   ],
   imports: [
     RouterModule.forRoot(

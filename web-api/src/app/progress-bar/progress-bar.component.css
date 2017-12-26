@@ -1,0 +1,22 @@
+.progress-wrap {
+    width: 50%;
+    height: 20px;
+    background-color: coral;
+    margin-bottom: 35px;
+    position: relative;
+}
+
+.progress-filler {
+    height: 20px;
+    background-color: black;
+    position: absolute;
+    /* width: 100px; */
+    transition: 0.3s ease;
+}
+
+
+@media(max-width: 772px) {
+    .progress-wrap {
+        width: 100%;
+    }
+}
