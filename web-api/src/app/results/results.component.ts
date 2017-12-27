@@ -1,5 +1,6 @@
 import { Component, OnInit} from '@angular/core';
 import { DataService } from 'app/services/dataService';
+import { QuestionsService } from '../services/questionsService';
 
 @Component({
   selector: 'app-results',
@@ -8,14 +9,14 @@ import { DataService } from 'app/services/dataService';
 
 export class ResultsComponent implements OnInit {
   message: number;
-  
-  constructor(public data: DataService) { }
+  questionsLength: number;
+  constructor(
+    public data: DataService,
+    public questionsService: QuestionsService
+  ) { }
 
   ngOnInit() {
     this.data.currentQuestion.subscribe(message => this.message = message);
-  }
-
-  ngOnChange( ){
-    
+    this.questionsLength = this.questionsService.getQuestionsListLength(); 
   }
 }
