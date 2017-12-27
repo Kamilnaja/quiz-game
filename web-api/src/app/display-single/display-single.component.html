@@ -1,4 +1,4 @@
-<app-progress-bar [data]=question[currentNum].id></app-progress-bar>
+<app-progress-bar [currentQuestion]=question[currentNum].id></app-progress-bar>
 
 <div *ngIf="question && question.length > 0">
     <h3 class="subtitle">Pytanie numer : {{ question[currentNum].id + 1 }} z {{questionLength}}</h3>
@@ -8,6 +8,5 @@
             <button class="button" (click)="nextQuestion($event)">{{item}}</button>
         </p>
     </div>
-    <button class="button" (click)="previousQuestion()">Poprzednie</button>
-    <button class="button" (click)="nextQuestion()">Następne</button>
+    <button class="button is-warning" (click)="previousQuestion()">Poprzednie</button>
 </div>

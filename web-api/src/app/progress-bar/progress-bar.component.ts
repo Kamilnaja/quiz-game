@@ -1,4 +1,5 @@
-import { Component, OnInit, Input, OnChanges } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, OnDestroy } from '@angular/core';
+import { QuestionsService } from '../services/questionsService';
 
 @Component({
     selector: 'app-progress-bar',
@@ -7,21 +8,20 @@ import { Component, OnInit, Input, OnChanges } from '@angular/core';
 })
 
 export class ProgressBarComponent implements OnInit, OnChanges {
+    questionsLength: number;
     @Input()
-
-    data;
     currentQuestion: number;
     currentLength: number;
+
     constructor(
+        public questionService: QuestionsService
     ) { }
 
     ngOnInit() {
+        this.questionsLength = this.questionService.getQuestionsListLength();
     }
 
     ngOnChanges() {
-        this.currentQuestion = this.data;
-        this.currentLength = Math.floor(this.currentQuestion * 100 / 3) ;  
-        console.log(this.currentLength);
+        this.currentLength = Math.floor((this.currentQuestion) * 100 / this.questionsLength); 
     }
-
 }

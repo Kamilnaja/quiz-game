@@ -21,4 +21,11 @@ export const questionList: Question[] = [{
         'Mont Black', 'K2', 'Kilimandżaro', 'Mont Everest'],
     goodAnswer: 'Mont Everest'
   },
+  {
+    id: 3,
+    title: 'Ciemne, mocne piwo, to inaczej: ',
+    answers: [
+        'Podpiwek', 'Porter', 'Lager', 'IPA'],
+    goodAnswer: 'Porter'
+  },
 ];

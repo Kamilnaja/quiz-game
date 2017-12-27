@@ -13,7 +13,7 @@ export class DisplaySingleComponent implements OnInit, OnDestroy {
     question: {};
     questionLength: number = 0;
     correctAnswers = 0;
-
+    currentLength: number;
     router: Router;
 
     // export this variable to
@@ -43,7 +43,9 @@ export class DisplaySingleComponent implements OnInit, OnDestroy {
         if (this.currentNum < questionsLength - 1) {
             return this.currentNum++;
         } else {
-            this.router.navigateByUrl('/lastquestion');
+            // todo - opóźnienie, bo animacja css się nie pokazuje
+                const instance = this;
+                instance.router.navigateByUrl('/lastquestion');
         }
     }
 
