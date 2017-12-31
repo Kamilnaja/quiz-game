@@ -1,14 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import { Component,  Input , OnChanges} from '@angular/core';
+import { QuestionsService } from '../services/questionsService';
 
 @Component({
-  selector: 'app-header',
-  templateUrl: './header.component.html',
+    selector: 'app-header',
+    templateUrl: './header.component.html',
 })
-export class HeaderComponent implements OnInit {
 
-  constructor() { }
+export class HeaderComponent implements OnChanges {
+    count: number;
+    @Input()
+    currentQuestion: number;
+    constructor(
+        public questionService: QuestionsService
+    ) { }
 
-  ngOnInit() {
-  }
-
+    ngOnChanges() {
+        this.count = this.currentQuestion;
+    }
 }

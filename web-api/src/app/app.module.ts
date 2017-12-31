@@ -63,6 +63,6 @@ export class AppModule {
       ngRedux.configureStore(
         rootReducer,
         INITIAL_STATE
-      )
+      );
     }
 }

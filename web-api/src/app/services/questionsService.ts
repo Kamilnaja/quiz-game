@@ -6,6 +6,9 @@ import 'rxjs/add/operator/map';
 import { questionList } from 'app/question-list';
 
 @Injectable()
+/*
+* Class returns data from json file (in the futer, from db);
+*/
 export class QuestionsService {
   constructor() {}
 
