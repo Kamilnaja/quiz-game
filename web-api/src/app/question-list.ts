@@ -11,7 +11,7 @@ export const questionList: Question[] = [{
     id: 2,
     title: 'Zupa z Francji z owocami morza, to:',
     answers: [
-        'Bouillabaisse', 'Zupa Cebulowa', 'Ucha', 'Barszcz'],
+        'Zupa Cebulowa', 'Ucha', 'Barszcz', 'Bouillabaisse'],
     goodAnswer: 'Bouillabaisse'
   },
   {
@@ -25,7 +25,7 @@ export const questionList: Question[] = [{
     id: 4,
     title: 'Ciemne, mocne piwo, to inaczej: ',
     answers: [
-        'Podpiwek', 'Porter', 'Lager', 'IPA'],
+        'Podpiwek', 'Lager', 'IPA', 'Porter'],
     goodAnswer: 'Porter'
   },
 ];

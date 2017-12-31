@@ -19,7 +19,7 @@ export class DisplaySingleComponent implements OnInit, OnDestroy {
     currentLength: number;
     router: Router;
     subscription;
-    count: number;
+    count: number = 1;
 
     constructor(
         public questionsService: QuestionsService,
@@ -37,40 +37,38 @@ export class DisplaySingleComponent implements OnInit, OnDestroy {
         this.question = this.questionsService.getQuestionsList();
         this.questionLength = this.questionsService.getQuestionsListLength();
         this.ngRedux.dispatch(this.actions.resetQuestion());
-      
-        console.log(`correctL: ${this.correctAnswers}`);
-        console.log(`count: ${this.count}`);
     }
 
-    evaluateAnswer() {
-        // todo - przenieść tutaj kod odpowiedzialny za sprawdzenie odpowiedzi
+    evaluateAnswer(e) {
+        if (e.target.textContent === this.question[this.count - 1].goodAnswer) {
+            this.correctAnswers++;
+        }
+    }
+
+    changeView() {
+        const instance = this;
+        instance.router.navigateByUrl('/lastquestion');
     }
 
     nextQuestion(e) {
         const questionsLength: number = Object.keys(this.question).length;
-        if (this.count + 1 < questionsLength) {
+        // this count ma wskazywać zawsze na aktualne pytanie takie jak w "pytanie x z y"
+        if (this.count < questionsLength) {
+            this.evaluateAnswer(e);
             this.ngRedux.dispatch(this.actions.nextQuestion());
-        } else { 
-            const instance = this;
-            instance.router.navigateByUrl('/lastquestion');
+            // ostatnie pytanie - sprawdź odp i przenieś
+        } else if (this.count === questionsLength) {
+            this.evaluateAnswer(e);
+            this.changeView();
         }
-        if (e.target.textContent === this.question[this.count - 1].goodAnswer) {
-            this.correctAnswers++;
-            console.log(`target: ${e.target.textContent} answer : ${this.question[this.count - 1].goodAnswer}`);
-            console.log(`correctL: ${this.correctAnswers}`);
-            console.log(`length: ${questionsLength}`);
-            console.log(`current: ${this.count}`);
-        }
+       
+
+
     }
 
     previousQuestion() {
         this.ngRedux.dispatch(this.actions.previousQuestion());
     }
-
-
-
-// todo - ustawić counter na 1 od początku
-// todo - dodać reseta
 
     ngOnDestroy() {
         this.data.changeQuestion(this.correctAnswers);

@@ -7,7 +7,7 @@ export interface IAppState {
 };
 
 export const INITIAL_STATE: IAppState = {
-    count: 0,
+    count: 1,
 };
 
 export function rootReducer(lastState: IAppState, action: Action): IAppState {
@@ -21,7 +21,7 @@ export function rootReducer(lastState: IAppState, action: Action): IAppState {
         };
 
         case CounterActions.RESET_QUESTION: return {
-            count: 0
+            count: 1
         };
     }
 
