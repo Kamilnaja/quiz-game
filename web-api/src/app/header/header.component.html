@@ -5,20 +5,20 @@
                 Quiz App
             </h1>
             <h2 class="subtitle">
-                Odpowiedz na wszystkie pytania.
+                Odpowiedz na wszystkie pytania. 
             </h2>
-            <span *ngIf="count == 0">
+            <span *ngIf="count == 1">
                 <a class="button" [routerLink]="['/displayquestion']">
                     Przejdź do quizu
                 </a>
             </span>
-            <span *ngIf="count != 0">
-                <a class="button" (click)='reset()'>
-                    Resetuj
-                </a>
+            <span *ngIf="count !== 1">
+                    <a class="button" (click)='reset()'>
+                        Resetuj
+                    </a>
             </span>
             <a class="button" [routerLink]="['displayallquestion']">Pokaż listę pytań</a>
-            <a class="button" [routerLink]="['/addquestion']">Dodaj pytanie (admin)</a>
+            <a class="button" [routerLink]="['/addquestion']">Dodaj pytanie (admin)</a>    
         </div>
     </div>
 </section>

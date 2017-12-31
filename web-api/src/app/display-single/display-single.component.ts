@@ -61,13 +61,12 @@ export class DisplaySingleComponent implements OnInit, OnDestroy {
             this.evaluateAnswer(e);
             this.changeView();
         }
-       
-
-
     }
 
     previousQuestion() {
-        this.ngRedux.dispatch(this.actions.previousQuestion());
+        if (this.count > 1) {
+            this.ngRedux.dispatch(this.actions.previousQuestion());
+        }
     }
 
     ngOnDestroy() {

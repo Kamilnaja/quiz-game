@@ -1,5 +1,5 @@
 <app-progress-bar [currentQuestion]=question[count]></app-progress-bar>
-
+{{count}}
 <div *ngIf="question && question.length > 0">
     <h3 class="subtitle">Pytanie numer : {{ question[count - 1 ].id }} z {{questionLength}}</h3>
     <h2 class="title">{{question[count -1 ].title }}</h2>
