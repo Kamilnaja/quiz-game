@@ -9,21 +9,24 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { DisplaySingleComponent } from './display-single/display-single.component';
 import { LastQuestionComponent } from './last-question/last-question.component';
 import { MainPageComponent } from './main-page/main-page.component';
-import {HeaderComponent} from './header/header.component';
-import {FooterComponent} from './footer/footer.component';
-import {ResultsComponent} from './results/results.component';
-import {HttpModule} from '@angular/http';
+import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer.component';
+import { ResultsComponent } from './results/results.component';
+import { HttpModule } from '@angular/http';
 import { DataService } from 'app/services/dataService';
 import { QuestionsService } from 'app/services/questionsService';
 import { ProgressBarComponent } from './progress-bar/progress-bar.component';
+import { NgReduxModule, NgRedux } from '@angular-redux/store';
+import { rootReducer, IAppState, INITIAL_STATE } from '../store';
+import { CounterActions } from './app.actions';
 
 const appRoutes: Routes = [
-  {path: 'addquestion', component: AddQuestionComponent },
-  {path: 'displayallquestion', component: DisplayAllQuestionsComponent },
-  {path: 'displayquestion', component: DisplaySingleComponent},
-  {path: '', component: MainPageComponent },
-  {path: 'lastquestion', component: LastQuestionComponent},
-  {path: 'results', component: ResultsComponent},
+  { path: 'addquestion', component: AddQuestionComponent },
+  { path: 'displayallquestion', component: DisplayAllQuestionsComponent },
+  { path: 'displayquestion', component: DisplaySingleComponent },
+  { path: '', component: MainPageComponent },
+  { path: 'lastquestion', component: LastQuestionComponent },
+  { path: 'results', component: ResultsComponent },
 ];
 
 @NgModule({
@@ -43,13 +46,23 @@ const appRoutes: Routes = [
   imports: [
     RouterModule.forRoot(
       appRoutes,
-      {enableTracing: true}
+      { enableTracing: true }
     ),
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    NgReduxModule
   ],
-  providers: [DataService, QuestionsService],
+  providers: [DataService, QuestionsService, CounterActions],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+    constructor(
+      ngRedux: NgRedux<IAppState>
+    ) {
+      ngRedux.configureStore(
+        rootReducer,
+        INITIAL_STATE
+      )
+    }
+}

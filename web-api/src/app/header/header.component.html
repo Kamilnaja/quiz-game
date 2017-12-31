@@ -7,6 +7,9 @@
             <h2 class="subtitle">
                 Odpowiedz na wszystkie pytania. 
             </h2>
+            <div *ngIf="count == 0">
+                <a class="button" [routerLink]="['/displayquestion']">Resetuj</a>
+            </div>
             <a class="button" [routerLink]="['/displayquestion']">Przejdź do quizu</a>
             <a class="button" [routerLink]="['displayallquestion']">Pokaż listę pytań</a>
             <a class="button" [routerLink]="['/addquestion']">Dodaj pytanie (admin)</a>    
