@@ -1,28 +1,28 @@
 import Question from './question';
 
 export const questionList: Question[] = [{
-    id: 0,
-    title: 'Zaznacz slowo na C',
-    answers: [
-        'lorem', 'ipsum', 'color', 'consectetur'],
-        'goodAnswer': 'color'
-  },
-  {
     id: 1,
-    title: 'Zaznacz slowo na L',
+    title: 'Makaron z dziurką w środku, to',
     answers: [
-        'Liban', 'Lorem', 'De Lorean', 'Lodołamacz'],
-    goodAnswer: 'Lorem'
+        'Tagiattelle', 'Spagetti', 'Bucatini', 'Stilfretto'],
+        'goodAnswer': 'Bucatini'
   },
   {
     id: 2,
+    title: 'Zupa z Francji z owocami morza, to:',
+    answers: [
+        'Bouillabaisse', 'Zupa Cebulowa', 'Ucha', 'Barszcz'],
+    goodAnswer: 'Bouillabaisse'
+  },
+  {
+    id: 3,
     title: 'Najwyższa góra na świecie',
     answers: [
         'Mont Black', 'K2', 'Kilimandżaro', 'Mont Everest'],
     goodAnswer: 'Mont Everest'
   },
   {
-    id: 3,
+    id: 4,
     title: 'Ciemne, mocne piwo, to inaczej: ',
     answers: [
         'Podpiwek', 'Porter', 'Lager', 'IPA'],

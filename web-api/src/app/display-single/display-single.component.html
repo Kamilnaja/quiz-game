@@ -1,6 +1,7 @@
-<app-progress-bar [currentQuestion]=question[count].id></app-progress-bar>
+<app-progress-bar [currentQuestion]=question[count]></app-progress-bar>
+
 <div *ngIf="question && question.length > 0">
-    <h3 class="subtitle">Pytanie numer : {{ question[count].id + 1 }} z {{questionLength}}</h3>
+    <h3 class="subtitle">Pytanie numer : {{ question[count].id }} z {{questionLength}}</h3>
     <h2 class="title">{{question[count].title }}</h2>
     <div *ngFor="let item of question[count].answers" class="field is-grouped">
         <p class="control">

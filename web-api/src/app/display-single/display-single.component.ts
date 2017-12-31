@@ -37,24 +37,29 @@ export class DisplaySingleComponent implements OnInit, OnDestroy {
         this.question = this.questionsService.getQuestionsList();
         this.questionLength = this.questionsService.getQuestionsListLength();
         this.ngRedux.dispatch(this.actions.resetQuestion());
+      
+        console.log(`correctL: ${this.correctAnswers}`);
+        console.log(`count: ${this.count}`);
     }
-    
+
     evaluateAnswer() {
         // todo - przenieść tutaj kod odpowiedzialny za sprawdzenie odpowiedzi
     }
 
     nextQuestion(e) {
         const questionsLength: number = Object.keys(this.question).length;
-
-        if (this.count < questionsLength - 1) {
+        if (this.count + 1 < questionsLength) {
             this.ngRedux.dispatch(this.actions.nextQuestion());
-        } else {
+        } else { 
             const instance = this;
             instance.router.navigateByUrl('/lastquestion');
         }
-
-        if (e.target.textContent === this.question[this.count].goodAnswer) {
+        if (e.target.textContent === this.question[this.count - 1].goodAnswer) {
             this.correctAnswers++;
+            console.log(`target: ${e.target.textContent} answer : ${this.question[this.count - 1].goodAnswer}`);
+            console.log(`correctL: ${this.correctAnswers}`);
+            console.log(`length: ${questionsLength}`);
+            console.log(`current: ${this.count}`);
         }
     }
 
