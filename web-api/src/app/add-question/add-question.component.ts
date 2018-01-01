@@ -15,7 +15,13 @@ export class AddQuestionComponent {
   ) { }
 
   onSubmit = function (question) {
-    console.log(question);
-    this.questionsService.addQuestion(question);
+    const payload = {
+      id: this.questionsService.getQuestionsListLength() + 1,
+      title: question.title,
+      answers: [question.firstAnswer, question.secondAnswer, question.thirdAnswer, question.fourthAnswer],
+      goodAnswer: question.goodAnswer
+    };
+    
+    this.questionsService.addQuestion(payload);
   };
 }
