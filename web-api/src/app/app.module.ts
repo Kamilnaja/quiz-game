@@ -13,7 +13,6 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { ResultsComponent } from './results/results.component';
 import { HttpModule } from '@angular/http';
-import { DataService } from 'app/services/dataService';
 import { QuestionsService } from 'app/services/questionsService';
 import { ProgressBarComponent } from './progress-bar/progress-bar.component';
 import { NgReduxModule, NgRedux, DevToolsExtension } from '@angular-redux/store';
@@ -53,7 +52,7 @@ const appRoutes: Routes = [
     HttpModule,
     NgReduxModule
   ],
-  providers: [DataService, QuestionsService, CounterActions],
+  providers: [QuestionsService, CounterActions],
   bootstrap: [AppComponent]
 })
 export class AppModule {

@@ -7,7 +7,7 @@ import { questionList } from 'app/question-list';
 
 @Injectable()
 /*
-* Class returns data from json file (in the futer, from db);
+* Class returns data from json file (in the future, from db);
 */
 export class QuestionsService {
   constructor() {}
@@ -18,6 +18,10 @@ export class QuestionsService {
 
   getQuestionsListLength(): number {
     return questionList.length;
+  }
+
+  addQuestion(data) {
+    questionList.push(data);
   }
 }
 

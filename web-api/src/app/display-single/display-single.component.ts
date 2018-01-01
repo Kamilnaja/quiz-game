@@ -1,6 +1,5 @@
-import { Component, OnInit, OnDestroy, Input } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { QuestionsService } from 'app/services/questionsService';
-import { DataService } from 'app/services/dataService';
 import { Router } from '@angular/router';
 import { Http, HttpModule } from '@angular/http';
 import { IAppState } from 'store';
@@ -12,7 +11,7 @@ import { NgRedux } from '@angular-redux/store';
     templateUrl: './display-single.component.html',
 })
 
-export class DisplaySingleComponent implements OnInit, OnDestroy {
+export class DisplaySingleComponent implements OnInit {
     question: {};
     questionLength = 0;
     correctAnswers = 0;
@@ -23,7 +22,6 @@ export class DisplaySingleComponent implements OnInit, OnDestroy {
 
     constructor(
         public questionsService: QuestionsService,
-        private data: DataService,
         _router: Router,
         private ngRedux: NgRedux<IAppState>,
         private actions: CounterActions
@@ -69,10 +67,5 @@ export class DisplaySingleComponent implements OnInit, OnDestroy {
         if (this.count > 1) {
             this.ngRedux.dispatch(this.actions.previousQuestion());
         }
-    }
-
-    ngOnDestroy() {
-        this.data.changeQuestion(this.correctAnswers);
-        this.subscription.unsubscribe();
     }
 }
