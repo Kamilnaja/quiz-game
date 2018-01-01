@@ -16,7 +16,7 @@ import { HttpModule } from '@angular/http';
 import { DataService } from 'app/services/dataService';
 import { QuestionsService } from 'app/services/questionsService';
 import { ProgressBarComponent } from './progress-bar/progress-bar.component';
-import { NgReduxModule, NgRedux } from '@angular-redux/store';
+import { NgReduxModule, NgRedux, DevToolsExtension } from '@angular-redux/store';
 import { rootReducer, IAppState, INITIAL_STATE } from '../store';
 import { CounterActions } from './app.actions';
 
@@ -58,7 +58,9 @@ const appRoutes: Routes = [
 })
 export class AppModule {
     constructor(
-      ngRedux: NgRedux<IAppState>
+      ngRedux: NgRedux<IAppState>,
+      private devTools: DevToolsExtension
+
     ) {
       ngRedux.configureStore(
         rootReducer,

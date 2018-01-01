@@ -41,7 +41,8 @@ export class DisplaySingleComponent implements OnInit, OnDestroy {
 
     evaluateAnswer(e) {
         if (e.target.textContent === this.question[this.count - 1].goodAnswer) {
-            this.correctAnswers++;
+            // this.correctAnswers++;
+            this.ngRedux.dispatch(this.actions.addPoint());
         }
     }
 
@@ -53,11 +54,12 @@ export class DisplaySingleComponent implements OnInit, OnDestroy {
     nextQuestion(e) {
         const questionsLength: number = Object.keys(this.question).length;
         // this count ma wskazywać zawsze na aktualne pytanie takie jak w "pytanie x z y"
+        console.log(this.count);
         if (this.count < questionsLength) {
             this.evaluateAnswer(e);
             this.ngRedux.dispatch(this.actions.nextQuestion());
-            // ostatnie pytanie - sprawdź odp i przenieś
         } else if (this.count === questionsLength) {
+            // ostatnie pytanie - sprawdź odp i przenieś
             this.evaluateAnswer(e);
             this.changeView();
         }

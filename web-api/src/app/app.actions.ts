@@ -7,6 +7,8 @@ export class CounterActions {
     static NEXT_QUESTION = 'NEXT_QUESTION';
     static PREVIOUS_QUESTION = 'PREVIOUS_QUESTION';
     static RESET_QUESTION = 'RESET_QUESTION';
+    // static ADD_QUESTION = 'ADD_QUESTION';
+    static ADD_POINT = 'ADD_POINT';
 
     nextQuestion(): Action {
         return {
@@ -25,4 +27,12 @@ export class CounterActions {
             type: CounterActions.RESET_QUESTION
         };
     }
+
+    addPoint(): Action {
+        return {
+            type: CounterActions.ADD_POINT
+        };
+    }
+
+    
 }

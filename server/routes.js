@@ -8,7 +8,6 @@ module.exports = function (app, db) {
         res.send(result.ops[0])
       }
     })
-      console.log(req.body)
       res.send('Hello');
   })
 

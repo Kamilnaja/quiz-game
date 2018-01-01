@@ -10,7 +10,7 @@ import { CounterActions } from 'app/app.actions';
     styleUrls: ['./progress-bar.component.css']
 })
 
-export class ProgressBarComponent implements OnInit, OnChanges {
+export class ProgressBarComponent implements OnInit {
     questionsLength: number;
     subscription;
     count: number = 1;
@@ -26,19 +26,9 @@ export class ProgressBarComponent implements OnInit, OnChanges {
     ) {
         this.subscription = ngRedux.select<number>('count')
             .subscribe(newCount => this.count = newCount);
-     }
+    }
 
     ngOnInit() {
         this.questionsLength = this.questionService.getQuestionsListLength();
-        // console.log(`length: ${this.count}  QuestionLength: ${this.questionsLength} `)
-        
     }
-    
-    ngOnChanges() {
-        // this.currentLength = this.count;
-        console.log(this.currentLength);
-        this.currentLength = Math.floor((this.count) * 100 / this.questionsLength); 
-        // console.log(`length: ${this.currentLength}  currQuestion: ${this.questionsLength} `)
-    }
-
 }
