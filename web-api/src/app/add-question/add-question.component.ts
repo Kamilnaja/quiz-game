@@ -21,7 +21,13 @@ export class AddQuestionComponent {
       answers: [question.firstAnswer, question.secondAnswer, question.thirdAnswer, question.fourthAnswer],
       goodAnswer: question.goodAnswer
     };
+
+    if (question.title) {
+      this.questionsService.addQuestion(payload);
+      alert('Twoje pytanie zostało dodane')
+    } else {
+      alert('wpisz wszystkie dane')
+    }
     
-    this.questionsService.addQuestion(payload);
   };
 }
