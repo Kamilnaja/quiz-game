@@ -18,14 +18,24 @@ import { ProgressBarComponent } from './progress-bar/progress-bar.component';
 import { NgReduxModule, NgRedux, DevToolsExtension } from '@angular-redux/store';
 import { rootReducer, IAppState, INITIAL_STATE } from '../store';
 import { CounterActions } from './app.actions';
+import { Router } from '@angular/router';
+import { AuthGuard } from './auth.guard';
+import { AuthService } from './services/auth.Service';
+import { LoginComponent } from './login/login.component';
 
-const appRoutes: Routes = [
-  { path: 'addquestion', component: AddQuestionComponent },
+export const appRoutes: Routes = [
+  { 
+    path: 'addquestion', 
+    component: AddQuestionComponent,
+    canActivate: [AuthGuard],
+  },
   { path: 'displayallquestion', component: DisplayAllQuestionsComponent },
   { path: 'displayquestion', component: DisplaySingleComponent },
   { path: '', component: MainPageComponent },
   { path: 'lastquestion', component: LastQuestionComponent },
   { path: 'results', component: ResultsComponent },
+  { path: 'login', component: LoginComponent },
+
 ];
 
 @NgModule({
@@ -41,6 +51,7 @@ const appRoutes: Routes = [
     FooterComponent,
     ResultsComponent,
     ProgressBarComponent,
+    LoginComponent,
   ],
   imports: [
     RouterModule.forRoot(
@@ -52,7 +63,7 @@ const appRoutes: Routes = [
     HttpModule,
     NgReduxModule
   ],
-  providers: [QuestionsService, CounterActions],
+  providers: [QuestionsService, CounterActions, AuthService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule {
