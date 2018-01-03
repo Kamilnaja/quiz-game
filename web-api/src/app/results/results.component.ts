@@ -15,19 +15,22 @@ export class ResultsComponent implements OnInit {
   questionsLength: number;
   subscription;
   points: number;
+  question;
 
   constructor(
 
-    public questionService: QuestionsService,
+    public questionsService: QuestionsService,
     private ngRedux: NgRedux<IAppState>,
-    private actions: CounterActions
+    private actions: CounterActions,
   ) {
     this.subscription = ngRedux.select<number>('points')
       .subscribe(newCount => this.points = newCount);
   }
 
   ngOnInit() {
-    // this.data.currentQuestion.subscribe(message => this.message = message);
-    this.questionsLength = this.questionService.getQuestionsListLength();
+    this.questionsService.getQuestionsList().subscribe(data => this.question = data);
+    console.log(this.question);
+    // todo - length pobrać
+
   }
 }

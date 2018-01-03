@@ -32,8 +32,7 @@ export class DisplaySingleComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.question = this.questionsService.getQuestionsList();
-        this.questionLength = this.questionsService.getQuestionsListLength();
+        this.questionsService.getQuestionsList().subscribe(data => this.question = data);
         this.ngRedux.dispatch(this.actions.resetQuestion());
     }
 

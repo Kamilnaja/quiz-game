@@ -1,16 +1,16 @@
-module.exports = function (app, db) {
-  app.post('/api/addquestion', (req, res) => {
-    const question = { title: req.body.body, answer: req.body.title}
-    db.collection('questions').insert(question, (err, result) => {
-      if (err) {
-        res.send({'error' : 'An error accured'})
-      } else {
-        res.send(result.ops[0])
-      }
-    })
-      res.send('Hello');
-  })
+var express = require('express');
+var router = express.Router();
 
-  
-  
-};
+router.get('/', (req, res) => {
+  res.send('Hello World');
+})
+
+router.get('/hello', (req, res) => {
+  res.send("Hello Hello")
+})
+
+router.all('/test', (req, res) => {
+  res.send("Http method dont have any effect");
+})
+
+module.exports = router

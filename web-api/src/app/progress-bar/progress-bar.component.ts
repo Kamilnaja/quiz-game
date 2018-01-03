@@ -14,13 +14,14 @@ export class ProgressBarComponent implements OnInit {
     questionsLength: number;
     subscription;
     count: number = 1;
+    question;
 
     @Input()
     currentQuestion: number;
     currentLength: number;
 
     constructor(
-        public questionService: QuestionsService,
+        public questionsService: QuestionsService,
         private ngRedux: NgRedux<IAppState>,
         private actions: CounterActions
     ) {
@@ -29,6 +30,9 @@ export class ProgressBarComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.questionsLength = this.questionService.getQuestionsListLength();
+        // this.questionsLength = this.questionService.getQuestionsListLength();
+        this.questionsService
+            .getQuestionsList()
+            .subscribe(data => this.question = data);
     }
 }
