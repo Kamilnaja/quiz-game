@@ -1,8 +1,10 @@
 var express = require("express");
-var app = express();
-
 var bodyParser = require('body-parser');
+var MongoClient = require('mongodb').MongoClient
+var Question = require('./models/question');
+var mongoose = require('mongoose');
 
+var app = express();
 app.use(bodyParser.json());
 
 app.use(function (req, res, next) {
@@ -23,41 +25,27 @@ app.use(function (req, res, next) {
     // Pass to next layer of middleware
     next();
 });
-
-app.get('/questions', (req, res) => {
-    res.send(JSON.stringify(
-        [{
-            id: 1,
-            title: 'Makaron z dziurką w środku, to',
-            answers: [
-                'Tagiattelle', 'Spagetti', 'Bucatini', 'Stilfretto'],
-            goodAnswer: 'Bucatini'
-        },
-        {
-            id: 2,
-            title: 'Zupa z Francji z owocami morza, to:',
-            answers: [
-                'Zupa Cebulowa', 'Ucha', 'Barszcz', 'Bouillabaisse'],
-            goodAnswer: 'Bouillabaisse'
-        },
-        {
-            id: 3,
-            title: 'Najwyższa góra na świecie',
-            answers: [
-                'Mont Black', 'K2', 'Kilimandżaro', 'Mont Everest'],
-            goodAnswer: 'Mont Everest'
-        },
-        {
-            id: 4,
-            title: 'Ciemne, mocne piwo, to inaczej: ',
-            answers: [
-                'Podpiwek', 'Lager', 'IPA', 'Porter'],
-            goodAnswer: 'Porter'
-        },
-        
-        ]));
-
-})
 app.use(bodyParser.urlencoded({ extended: true }));
 
+app.post('/api/questions', (req, res, next) => {
+    var question = new Question ({
+        title: 'lorem',
+        answers: ['lorem', 'ipsum'],
+        goodAnswer: ['lorem']
+    })
+    // question.save((err, question) => {
+    //     if (err) { return next(err)}
+    //     res.json(201, question);
+    // })
+    console.log(question);
+})
+
+app.get('/api/questions', (req, res, next) => {
+    Question.find(function(err, questions) {
+        // if (err) { return next(err)}
+        res.json(posts);
+    })
+    res.send('lorem ipsum mocium panie')
+});
+console.log(`app listening on ${8080}`)
 app.listen(8080);

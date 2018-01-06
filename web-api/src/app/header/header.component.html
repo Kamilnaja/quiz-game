@@ -1,7 +1,7 @@
 <section class="hero is-primary is-bold">
     <div class="hero-body">
         <div class="container">
-            <h1 class="title">
+            <h1 class="title logo" [routerLink]="['/']">
                 Quiz App
             </h1>
             <h2 class="subtitle">
@@ -17,7 +17,7 @@
                         Resetuj
                     </a>
             </span>
-            <a class="button" [routerLink]="['displayallquestion']">Pokaż listę pytań</a>
+            <a class="button" [routerLink]="['/displayallquestion']">Pokaż listę pytań</a>
             <a class="button" [routerLink]="['/addquestion']">Dodaj pytanie (admin)</a>    
             <a class="button" [routerLink]="['/login']">Zaloguj się</a>    
         </div>
