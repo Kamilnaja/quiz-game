@@ -6,6 +6,7 @@ import { IAppState } from 'store';
 import { CounterActions } from 'app/app.actions';
 import { NgRedux } from '@angular-redux/store';
 
+
 @Component({
     selector: 'app-display-single',
     templateUrl: './display-single.component.html',
@@ -13,7 +14,7 @@ import { NgRedux } from '@angular-redux/store';
 
 export class DisplaySingleComponent implements OnInit {
     question: {};
-    questionLength = 0;
+    questionsLength = 0;
     correctAnswers = 0;
     currentLength: number;
     router: Router;
@@ -32,13 +33,16 @@ export class DisplaySingleComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.questionsService.getQuestionsList().subscribe(data => this.question = data);
-        this.ngRedux.dispatch(this.actions.resetQuestion());
+        this.questionsService.getQuestionsList()
+            .subscribe(data => this.question = data);
+        this.ngRedux
+            .dispatch(this.actions.resetQuestion());
+        this.questionsService.getQuestionsList()
+            .subscribe(data => this.questionsLength = data.length);
     }
 
     evaluateAnswer(e) {
         if (e.target.textContent === this.question[this.count - 1].goodAnswer) {
-            // this.correctAnswers++;
             this.ngRedux.dispatch(this.actions.addPoint());
         }
     }

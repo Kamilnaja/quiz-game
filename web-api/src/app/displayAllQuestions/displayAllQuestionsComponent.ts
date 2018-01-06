@@ -8,11 +8,16 @@ import { Http, HttpModule } from '@angular/http';
 })
 
 export class DisplayAllQuestionsComponent implements OnInit {
-  public question: {};
+  public questionsList: {};
+  public questionsLength: number;
+
   constructor(private questionsService: QuestionsService) {
   }
 
   ngOnInit() {
-    this.questionsService.getQuestionsList().subscribe(data => this.question = data);
+    this.questionsService.getQuestionsList()
+      .subscribe(data => this.questionsList = data);
+    this.questionsService.getQuestionsList()
+      .subscribe(data => this.questionsLength = data.length);
   }
 }

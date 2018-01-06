@@ -1,2 +1,4 @@
 node_modules
 web-api/.vs/
+todos.todo
+.vscode/

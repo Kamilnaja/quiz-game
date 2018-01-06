@@ -14,7 +14,7 @@ export class QuestionsService {
     constructor(private http: Http) { }
 
     getQuestionsList() {
-        return this.http.get('http://localhost:8080/questions').map((res: Response) => res.json());
+        return this.http.get(`${this.url}/questions`).map((res: Response) => res.json());
     }
 
     // getQuestionsListLength() {
