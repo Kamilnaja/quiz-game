@@ -10,6 +10,13 @@ var MongoClient = require('mongodb').MongoClient;
 
 var app = express();
 
+var questionSchema = new mongoose.Schema({
+    title: String,
+    goodAnswer: String
+})
+
+var Question = mongoose.model("Question", questionSchema);
+
 app.use(bodyParser.json());
 
 app.use(function (req, res, next) {
@@ -38,6 +45,10 @@ MongoClient.connect(db.url, (err, database) => {
     dbase = database.db('quiz');
 })
 
+app.get('/', (req, res) => {
+    res.send('dziękuję za dodanie pytania');
+})
+
 app.get('/api/questions', (req, res) => {
     dbase.collection("questions").find({}).toArray((err, result) => {
         if (err) throw err;
@@ -46,7 +57,8 @@ app.get('/api/questions', (req, res) => {
 })
 
 app.post('/api/questions', (req, res) => {
-    dbase.collection('questions').save(req.body, (err, result) => {
+    var myData = new Question(req.body);
+    dbase.collection('questions').save(myData, (err, result) => {
         if (err) return console.log(err);
         console.log('saved to db');
         res.redirect('/');
