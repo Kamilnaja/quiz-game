@@ -3,8 +3,13 @@ var bodyParser = require('body-parser');
 var MongoClient = require('mongodb').MongoClient
 var Question = require('./models/question');
 var mongoose = require('mongoose');
+var db = require('./configDb');
+var dbase;
+
+var MongoClient = require('mongodb').MongoClient;
 
 var app = express();
+
 app.use(bodyParser.json());
 
 app.use(function (req, res, next) {
@@ -25,27 +30,30 @@ app.use(function (req, res, next) {
     // Pass to next layer of middleware
     next();
 });
+
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.post('/api/questions', (req, res, next) => {
-    var question = new Question ({
-        title: 'lorem',
-        answers: ['lorem', 'ipsum'],
-        goodAnswer: ['lorem']
-    })
-    // question.save((err, question) => {
-    //     if (err) { return next(err)}
-    //     res.json(201, question);
-    // })
-    console.log(question);
+MongoClient.connect(db.url, (err, database) => {
+    if (err) return console.log(err);
+    dbase = database.db('quiz');
 })
 
-app.get('/api/questions', (req, res, next) => {
-    Question.find(function(err, questions) {
-        // if (err) { return next(err)}
-        res.json(posts);
+app.get('/api/questions', (req, res) => {
+    dbase.collection("questions").find({}).toArray((err, result) => {
+        if (err) throw err;
+        res.send(result);
     })
-    res.send('lorem ipsum mocium panie')
-});
-console.log(`app listening on ${8080}`)
+})
+
+app.post('/api/questions', (req, res) => {
+    dbase.collection('questions').save(req.body, (err, result) => {
+        if (err) return console.log(err);
+        console.log('saved to db');
+        res.redirect('/');
+    })
+})
+
+console.log(`app listening on 8080`)
 app.listen(8080);
+
+// https://zellwk.com/blog/crud-express-mongodb/

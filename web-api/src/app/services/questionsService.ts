@@ -14,17 +14,8 @@ export class QuestionsService {
     constructor(private http: Http) { }
 
     getQuestionsList() {
-        return this.http.get(`${this.url}/questions`).map((res: Response) => res.json());
+        return this.http.get(`${this.url}/api/questions`).map((res: Response) => res.json());
     }
-
-    // getQuestionsListLength() {
-    //     // return this.http.get(`${this.url}/questions`);
-    //     return 12;
-    // }
-
-    // addQuestion(data) {
-    //     questionList.push(data);
-    // }
 }
 
 export default QuestionsService;
