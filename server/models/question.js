@@ -6,4 +6,5 @@ var mySchema = mongoose.Schema(
         answers: Array,
     }
 )
+
 module.exports = mySchema;
