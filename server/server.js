@@ -1,3 +1,4 @@
+
 var mySchema    = require('./models/question');
 var express     = require("express");
 var bodyParser  = require('body-parser');
@@ -11,8 +12,8 @@ var app         = express();
 var index       = require('./routes/index');
 var questions   = require('./routes/questions');
 
-app.use('/', index);
-app.use('/question', questions);
+app.use('/', questions);
+app.use('/api', questions);
 
 app.use(bodyParser.json());
 
