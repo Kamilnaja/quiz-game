@@ -3,10 +3,10 @@
 </h3>
 <div *ngFor="let item of questionsList; let i = index" [attr.data-index]="i">
     <h2>Pytanie numer : {{item.id}}</h2>
-    <h3><b>Tytuł:   </b> {{item.title}}</h3>
+    <h3><b>Tytuł : </b> {{item.title}}</h3>
     <ul>
         <li *ngFor="let item of questionsList[i].answers; let i = index">
-            <b>{{i}}: </b>{{item}}
+            <b>{{i}} </b>: {{item}}
         </li>
     </ul>
     <hr>

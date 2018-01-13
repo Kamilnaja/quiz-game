@@ -14,7 +14,7 @@ export const INITIAL_STATE: IAppState = {
 
 export function rootReducer(lastState: IAppState, action: Action): IAppState {
     switch (action.type) {
-        case CounterActions.NEXT_QUESTION: return { 
+        case CounterActions.NEXT_QUESTION: return {
             count: lastState.count + 1,
             points: lastState.points
         };

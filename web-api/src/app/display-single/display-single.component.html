@@ -1,12 +1,14 @@
 <app-progress-bar></app-progress-bar>
 
 <div *ngIf="question && question.length > 0">
-    <h3 class="subtitle">Pytanie numer : {{ question[count - 1 ].id }} z {{questionsLength}}</h3>
+    <h3 class="subtitle">Pytanie numer : {{ count }} z {{questionsLength}}</h3>
     <h2 class="title">{{question[count - 1 ].title }}</h2>
     <div *ngFor="let item of question[ count -1 ].answers" class="field is-grouped">
         <p class="control">
             <button class="button" (click)="nextQuestion($event)">{{item}}</button>
         </p>
     </div>
-    <button class="button is-warning" (click)="previousQuestion()">Poprzednie</button>
+    <button class="button is-warning" (click)="previousQuestion()">
+        Poprzednie
+    </button>
 </div>

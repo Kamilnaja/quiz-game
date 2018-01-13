@@ -1,6 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { QuestionsService } from 'app/services/questionsService';
 import { Http, HttpModule } from '@angular/http';
+import { NgRedux } from '@angular-redux/store';
+import { IAppState } from 'store';
+import { CounterActions } from 'app/app.actions';
 
 @Component({
   selector: 'app-display-question',
@@ -10,8 +13,20 @@ import { Http, HttpModule } from '@angular/http';
 export class DisplayAllQuestionsComponent implements OnInit {
   public questionsList: {};
   public questionsLength: number;
+  subscription;
+  count: number;
 
-  constructor(private questionsService: QuestionsService) {
+  @Input()
+  currentQuestion: number;
+  currentLength: number;
+
+  constructor(
+    public questionsService: QuestionsService,
+    private ngRedux: NgRedux<IAppState>,
+    private actions: CounterActions
+  ) {
+    this.subscription = ngRedux.select<number>('count')
+    .subscribe(newCount => this.count = newCount);
   }
 
   ngOnInit() {

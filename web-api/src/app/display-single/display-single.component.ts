@@ -6,7 +6,6 @@ import { IAppState } from 'store';
 import { CounterActions } from 'app/app.actions';
 import { NgRedux } from '@angular-redux/store';
 
-
 @Component({
     selector: 'app-display-single',
     templateUrl: './display-single.component.html',
@@ -19,7 +18,7 @@ export class DisplaySingleComponent implements OnInit {
     currentLength: number;
     router: Router;
     subscription;
-    count: number = 1;
+    count: number;
 
     constructor(
         public questionsService: QuestionsService,
@@ -55,7 +54,6 @@ export class DisplaySingleComponent implements OnInit {
     nextQuestion(e) {
         const questionsLength: number = Object.keys(this.question).length;
         // this count ma wskazywać zawsze na aktualne pytanie takie jak w "pytanie x z y"
-        console.log(this.count);
         if (this.count < questionsLength) {
             this.evaluateAnswer(e);
             this.ngRedux.dispatch(this.actions.nextQuestion());

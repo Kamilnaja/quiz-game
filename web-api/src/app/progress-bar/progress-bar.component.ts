@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnChanges } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { QuestionsService } from '../services/questionsService';
 import { NgRedux } from '@angular-redux/store';
 import { IAppState } from 'store';
@@ -10,8 +10,8 @@ import { CounterActions } from 'app/app.actions';
     styleUrls: ['./progress-bar.component.css']
 })
 
-export class ProgressBarComponent implements OnInit, OnChanges {
-    questionsLength: number;
+export class ProgressBarComponent implements OnInit {
+    public questionsLength: number;
     subscription;
     count: number;
     question;
@@ -28,11 +28,7 @@ export class ProgressBarComponent implements OnInit, OnChanges {
         this.subscription = ngRedux.select<number>('count')
         .subscribe(newCount => this.count = newCount);
     }
-    
-    ngOnChanges() {
-        this.count = this.currentQuestion;
-    }
-    
+        
     ngOnInit() {
         this.questionsService.getQuestionsList()
             .subscribe(data => this.question = data);
