@@ -19,12 +19,12 @@ export class AddQuestionComponent {
       goodAnswer: question.goodAnswer
     };
 
+// todo - jeśli formularz is valid
     if (question.title) {
       this.questionsService.addQuestion(payload);
-      console.log('Twoje pytanie zostało dodane')
+      console.log('Twoje pytanie zostało dodane');
     } else {
-      console.log('wpisz wszystkie dane')
+      console.log('wpisz wszystkie dane');
     }
-    
   };
 }

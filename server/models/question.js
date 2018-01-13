@@ -5,9 +5,11 @@ var mySchema = mongoose.Schema(
             type: String,
             required: true
         },
-        goodAnswer: String,
+        goodAnswer: {
+            type: String,
+            required: true
+        }, 
         answers: Array,
-        goodAnswer: String
     }
 )
 
