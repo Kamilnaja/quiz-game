@@ -12,7 +12,9 @@ var questions     = require('./routes/questions');
 var mySchema      = require('./models/question');
 var QuestionModel = mongoose.model('Question', mySchema);
 var app           = express();
+var accessControl = require('./accessControl');
 
+app.use(accessControl);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true }));
 
