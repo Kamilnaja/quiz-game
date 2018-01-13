@@ -1,9 +1,13 @@
 var mongoose = require('mongoose');
 var mySchema = mongoose.Schema(
     {
-        title: String,
+        title: {
+            type: String,
+            required: true
+        },
         goodAnswer: String,
         answers: Array,
+        goodAnswer: String
     }
 )
 

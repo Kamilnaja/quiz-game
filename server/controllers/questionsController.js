@@ -1,18 +1,33 @@
-var Question = require('../models/question');
+var mongoose = require('mongoose');
+var QuestionSchema = require('../models/question');
+var QuestionModel  = mongoose.model('Question', QuestionSchema);
 
 exports.index = (req, res) => {
-    res.send('Not implemented: Home page');
+    res.send('Main site');
 }
 
 exports.create_question = (req, res) => {
-    res.send('Not implemented yet: dodaj pytanie');
+    var questionInstance = new QuestionModel({
+        title: req.body.title,
+        goodAnswer: req.body.goodAnswer,
+    
+    });
+    questionInstance.save((err) => {
+        if (err) return err;
+    })
+    res.send("zapisano pytanie");
 }
 
 exports.questions_list = (req, res) => {
-    res.send('Not implemented questions list');
+    QuestionModel.find({},  'title')
+    .sort('-date')
+    .exec((err, list_questions) => {
+        if (err) { return (err) }
+        res.send(list_questions);
+    })
 }
 
-exports.question_detail = (req, res) => {
+exports.question_detail = (req, res) => {   
     res.send('Not implemented: Question details ' + req.params.id)
 }
 
