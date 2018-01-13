@@ -5,10 +5,8 @@ import { QuestionsService } from 'app/services/questionsService';
 @Component({
   selector: 'app-add-question',
   templateUrl: './add-question.component.html',
-  styleUrls: ['./add-question.component.css']
 })
 export class AddQuestionComponent {
-
   constructor(
     public questionsService: QuestionsService,
 
@@ -16,7 +14,6 @@ export class AddQuestionComponent {
 
   onSubmit = function (question) {
     const payload = {
-      id: this.questionsService.getQuestionsListLength() + 1,
       title: question.title,
       answers: [question.firstAnswer, question.secondAnswer, question.thirdAnswer, question.fourthAnswer],
       goodAnswer: question.goodAnswer
@@ -24,9 +21,9 @@ export class AddQuestionComponent {
 
     if (question.title) {
       this.questionsService.addQuestion(payload);
-      alert('Twoje pytanie zostało dodane')
+      console.log('Twoje pytanie zostało dodane')
     } else {
-      alert('wpisz wszystkie dane')
+      console.log('wpisz wszystkie dane')
     }
     
   };

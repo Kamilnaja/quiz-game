@@ -10,7 +10,6 @@ exports.create_question = (req, res) => {
     var questionInstance = new QuestionModel({
         title: req.body.title,
         goodAnswer: req.body.goodAnswer,
-    
     });
     questionInstance.save((err) => {
         if (err) return err;
