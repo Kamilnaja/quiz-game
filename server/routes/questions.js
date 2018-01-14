@@ -7,8 +7,8 @@ var question_controller = require('../controllers/questionsController');
 
 router.get('/', question_controller.index);
 router.get('/api/questions', question_controller.questions_list);
-router.post('/api/create_question', question_controller.create_question);
+router.get('/api/question/:id', question_controller.display_question);
 router.options('/api/create_question', question_controller.create_question);
-router.delete('/api/delete_question', question_controller.delete_question);
+router.delete('/api/delete_question/:id', question_controller.delete_question);
 
 module.exports = router;
