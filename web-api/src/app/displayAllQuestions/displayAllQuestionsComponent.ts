@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { QuestionsService } from 'app/services/questionsService';
+import questionsService, { QuestionsService } from 'app/services/questionsService';
 import { Http, HttpModule } from '@angular/http';
 import { NgRedux } from '@angular-redux/store';
 import { IAppState } from 'store';
@@ -27,6 +27,10 @@ export class DisplayAllQuestionsComponent implements OnInit {
   ) {
     this.subscription = ngRedux.select<number>('count')
     .subscribe(newCount => this.count = newCount);
+  }
+
+  deleteQuestion (e: any){
+    this.questionsService.removeQuestion(e.target.id);
   }
 
   ngOnInit() {

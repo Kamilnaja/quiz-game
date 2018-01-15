@@ -4,10 +4,13 @@
 <div *ngFor="let item of questionsList; let i = index" [attr.data-index]="i">
     <h2>Pytanie numer : {{item.id}}</h2>
     <h3><b>Tytuł : </b> {{item.title}}</h3>
+    <h3>{{item._id}}</h3>
     <ul>
         <li *ngFor="let item of questionsList[i].answers; let i = index">
-            <b>{{i}} </b>: {{item}}
+            <b>{{i + 1}} </b>: {{item}}
         </li>
     </ul>
+    <button (click)="deleteQuestion($event)" data-id={{item._id}}>usuń</button>
+
     <hr>
 </div>

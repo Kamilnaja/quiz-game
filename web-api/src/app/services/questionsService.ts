@@ -19,7 +19,18 @@ export class QuestionsService {
     }
     
     removeQuestionsList() {
-        this.http.delete(`${this.url}/api/remove_questions`);
+        this.http
+            .delete(`${this.url}/api/delete_questions`);
+    }
+
+    removeQuestion(item: String) {
+        this.http
+            .delete(`${this.url}/api/delete_question/${item}`)
+            .subscribe(
+                () => {},
+                err => console.log(err)
+            );
+            
     }
 
     addQuestion(payload) {

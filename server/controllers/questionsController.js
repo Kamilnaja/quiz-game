@@ -26,6 +26,7 @@ exports.questions_list = (req, res) => {
             res.send(list_questions);
         })
 }
+
 exports.display_question = (req, res) => {
     QuestionModel
         .findOne({ '_id': req.params.id })
@@ -34,6 +35,7 @@ exports.display_question = (req, res) => {
             res.send(question);
         })
 }
+
 exports.question_detail = (req, res) => {
     res.send('Not implemented: Question details ' + req.params._id)
 }
