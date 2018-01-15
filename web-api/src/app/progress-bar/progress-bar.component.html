@@ -1,4 +1,9 @@
-<div class="progress-wrap">
-    <div class="progress-filler" [ngStyle]="{'width': count * 100 / questionsLength + '%'}">
+<div *ngIf="questionsLength; else content">
+    <div class="progress-wrap">
+        <div class="progress-filler" [ngStyle]="{'width': count * 100 / questionsLength + '%'}">
+        </div>
     </div>
 </div>
+<ng-template #content>
+    W bazie nie ma pytań!. Zaloguj się i coś dodaj
+</ng-template>

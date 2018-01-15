@@ -17,6 +17,12 @@ export class QuestionsService {
             .get(`${this.url}/api/questions`)
             .map((res: Response) => res.json());
     }
+
+    getQuestionsListLength() {
+        return this.http
+            .get(`${this.url}/api/questions_length`)
+            .map((res: Response) => res.json());
+    }
     
     removeQuestionsList() {
         this.http
@@ -27,10 +33,9 @@ export class QuestionsService {
         this.http
             .delete(`${this.url}/api/delete_question/${item}`)
             .subscribe(
-                () => {},
-                err => console.log(err)
-            );
-            
+            () => { },
+            err => console.log(err));
+
     }
 
     addQuestion(payload) {
@@ -39,8 +44,8 @@ export class QuestionsService {
         this.http
             .post(`${this.url}/api/create_question`, body)
             .subscribe(
-              () => {},
-              err => console.log(err));
+            () => { },
+            err => console.log(err));
     }
 }
 

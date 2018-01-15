@@ -12,6 +12,7 @@ exports.create_question = (req, res) => {
         goodAnswer: req.body.goodAnswer,
         answers: req.body.answers
     });
+
     questionInstance.save((err) => {
         if (err) return err;
     })
@@ -25,6 +26,17 @@ exports.questions_list = (req, res) => {
             if (err) { return (err) }
             res.send(list_questions);
         })
+}
+
+exports.questions_list_length = (req, res) => {
+    QuestionModel
+        .find()
+        .count()
+        .exec((err, count) => {
+            if (err) {return (err)}
+            res.json(count);
+        });
+
 }
 
 exports.display_question = (req, res) => {
